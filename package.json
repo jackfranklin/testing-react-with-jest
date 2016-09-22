@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack -w",
-    "start": "live-server --port=8081"
+    "start": "live-server --port=8081",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -18,10 +19,13 @@
   },
   "devDependencies": {
     "babel-core": "6.14.0",
+    "babel-jest": "15.0.0",
     "babel-loader": "6.2.5",
+    "babel-polyfill": "6.13.0",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-react": "6.11.1",
     "enzyme": "2.4.1",
+    "jest": "15.1.1",
     "live-server": "1.1.0",
     "react-addons-test-utils": "15.3.2",
     "webpack": "1.13.2"
