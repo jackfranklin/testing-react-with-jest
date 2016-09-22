@@ -1,3 +1,5 @@
+import shortid from 'shortid';
+
 export function toggleDone(state, id) {
   const todos = state.todos.map((todo) => {
     if (todo.id === id) {
@@ -11,12 +13,13 @@ export function toggleDone(state, id) {
 }
 
 export function addTodo(state, todo) {
-  const lastTodo = state.todos[state.todos.length - 1];
-  todo.id = lastTodo.id + 1;
-  todo.done = false;
+  const newTodo = Object.assign({}, todo, {
+    id: shortid.generate(),
+    done: false
+  });
 
   return {
-    todos: state.todos.concat([todo])
+    todos: state.todos.concat([newTodo])
   };
 }
 

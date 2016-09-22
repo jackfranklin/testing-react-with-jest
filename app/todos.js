@@ -1,6 +1,7 @@
 import React from 'react';
 import Todo from './todo';
 import AddTodo from './add-todo';
+import shortid from 'shortid';
 
 import {
   toggleDone,
@@ -13,9 +14,9 @@ export default class Todos extends React.Component {
     super(props);
     this.state = {
       todos: [
-        { id: 1, name: 'Write the blog post', done: false },
-        { id: 2, name: 'Buy Christmas presents', done: false },
-        { id: 3, name: 'Leave Santa his mince pies', done: false },
+        { id: shortid.generate(), name: 'Write a blog post for Sitepoint', done: false },
+        { id: shortid.generate(), name: 'Blog about Jest', done: false },
+        { id: shortid.generate(), name: 'Walk the dog', done: false },
       ]
     }
   }
