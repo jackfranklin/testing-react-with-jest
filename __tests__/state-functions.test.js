@@ -1,5 +1,31 @@
-describe('Addition', () => {
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
+import { toggleDone, deleteTodo } from '../app/state-functions';
+
+describe('toggleDone', () => {
+  describe('when given an incomplete todo', () => {
+    it('marks the todo as completed', () => {
+      const startState = {
+        todos: [{ id: 1, done: false, text: 'Buy Milk' }]
+      };
+
+      const finState = toggleDone(startState, 1);
+
+      expect(finState.todos).toEqual([
+        { id: 1, done: true, text: 'Buy Milk' }
+      ]);
+    });
+  });
+});
+
+describe('deleteTodo', () => {
+  describe('when given a todo to delete', () => {
+    it('deletes it', () => {
+      const startState = {
+        todos: [{ id: 1, done: false, text: 'Buy Milk' }]
+      };
+
+      const finState = deleteTodo(startState, 1);
+
+      expect(finState.todos).toEqual([]);
+    });
   });
 });
