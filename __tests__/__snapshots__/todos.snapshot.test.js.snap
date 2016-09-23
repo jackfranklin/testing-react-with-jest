@@ -1,0 +1,76 @@
+exports[`Todos component renders correctly 1`] = `
+<div>
+  <p>
+    The 
+    <em>
+      best
+    </em>
+     todo app out there.
+  </p>
+  <h1>
+    Things to get done:
+  </h1>
+  <ul
+    className="todos-list">
+    <li>
+      <div
+        className="todo  todo-0">
+        <p
+          className="toggle-todo"
+          onClick={[Function onClick]}>
+          Write a blog post for Sitepoint
+        </p>
+        <a
+          className="delete-todo"
+          href="#"
+          onClick={[Function onClick]}>
+          Delete
+        </a>
+      </div>
+    </li>
+    <li>
+      <div
+        className="todo  todo-1">
+        <p
+          className="toggle-todo"
+          onClick={[Function onClick]}>
+          Blog about Jest
+        </p>
+        <a
+          className="delete-todo"
+          href="#"
+          onClick={[Function onClick]}>
+          Delete
+        </a>
+      </div>
+    </li>
+    <li>
+      <div
+        className="todo  todo-2">
+        <p
+          className="toggle-todo"
+          onClick={[Function onClick]}>
+          Walk the dog
+        </p>
+        <a
+          className="delete-todo"
+          href="#"
+          onClick={[Function onClick]}>
+          Delete
+        </a>
+      </div>
+    </li>
+  </ul>
+  <div
+    className="add-todo">
+    <input
+      onChange={[Function onChange]}
+      placeholder="Walk the dog"
+      type="text" />
+    <button
+      onClick={[Function onClick]}>
+      Add Todo
+    </button>
+  </div>
+</div>
+`;

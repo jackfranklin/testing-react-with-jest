@@ -3,14 +3,17 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 describe('Todo component', () => {
-  describe('Rendering the todo', () => {
-    it('includes the text of the todo in the output', () => {
+  describe('toggling the todo', () => {
+    it('calls the given doneChange callback prop', () => {
       const todo = { id: 1, done: false, name: 'Buy Milk' };
+      const doneChange = jest.fn();
       const rendered = TestUtils.renderIntoDocument(
-        <Todo todo={todo} />
+        <Todo todo={todo} doneChange={doneChange} />
       );
-      const p = TestUtils.findRenderedDOMComponentWithTag(rendered, 'p');
-      expect(p.textContent).toBe('Buy Milk');
+
+      const todoP = TestUtils.findRenderedDOMComponentWithClass(rendered, 'toggle-todo');
+      TestUtils.Simulate.click(todoP);
+      expect(doneChange).toBeCalledWith(1);
     });
   });
 });
