@@ -3,13 +3,13 @@ exports[`test Todo component renders the todo correctly 1`] = `
   className="todo  todo-1">
   <p
     className="toggle-todo"
-    onClick={[Function onClick]}>
+    onClick={[Function]}>
     Buy Milk
   </p>
   <a
     className="delete-todo"
     href="#"
-    onClick={[Function onClick]}>
+    onClick={[Function]}>
     Delete
   </a>
 </div>
