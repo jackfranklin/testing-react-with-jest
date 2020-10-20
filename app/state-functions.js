@@ -1,7 +1,7 @@
-import shortid from 'shortid';
+import shortid from "shortid";
 
-export function toggleDone(state, id) {
-  const todos = state.todos.map((todo) => {
+export function toggleDone(todos, id) {
+  const filteredTodos = todos.map((todo) => {
     if (todo.id === id) {
       todo.done = !todo.done;
     }
@@ -9,22 +9,18 @@ export function toggleDone(state, id) {
     return todo;
   });
 
-  return { todos };
+  return filteredTodos;
 }
 
-export function addTodo(state, todo) {
+export function addTodo(todos, todo) {
   const newTodo = Object.assign({}, todo, {
     id: shortid.generate(),
-    done: false
+    done: false,
   });
 
-  return {
-    todos: state.todos.concat([newTodo])
-  };
+  return todos.concat([newTodo]);
 }
 
-export function deleteTodo(state, id) {
-  return {
-    todos: state.todos.filter((todo) => todo.id !== id)
-  };
+export function deleteTodo(todos, id) {
+  return todos.filter((todo) => todo.id !== id);
 }

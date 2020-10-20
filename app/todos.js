@@ -1,59 +1,55 @@
-import React from 'react';
-import Todo from './todo';
-import AddTodo from './add-todo';
-import shortid from 'shortid';
+import React, { useState } from "react";
+import Todo from "./todo";
+import AddTodo from "./add-todo";
+import shortid from "shortid";
 
-import {
-  toggleDone,
-  addTodo,
-  deleteTodo
-} from './state-functions';
+import { toggleDone, addTodo, deleteTodo } from "./state-functions";
 
-export default class Todos extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [
-        { id: shortid.generate(), name: 'Write a blog post for Sitepoint', done: false },
-        { id: shortid.generate(), name: 'Blog about Jest', done: false },
-        { id: shortid.generate(), name: 'Walk the dog', done: false },
-      ]
-    }
-  }
+export default function Todos(props) {
+  const [todos, setTodos] = useState([
+    {
+      id: shortid.generate(),
+      name: "Write a blog post for Sitepoint",
+      done: false,
+    },
+    { id: shortid.generate(), name: "Blog about Jest", done: false },
+    { id: shortid.generate(), name: "Walk the dog", done: false },
+  ]);
 
-  toggleDone(id) {
-    this.setState(toggleDone(this.state, id));
-  }
+  const onToggleDone = (id) => {
+    setTodos(toggleDone(todos, id));
+  };
 
-  addTodo(todo) {
-    this.setState(addTodo(this.state, todo));
-  }
+  const onAddTodo = (todo) => {
+    setTodos(addTodo(todos, todo));
+  };
 
-  deleteTodo(id) {
-    this.setState(deleteTodo(this.state, id));
-  }
+  const onDeleteTodo = (id) => {
+    setTodos(deleteTodo(todos, id));
+  };
 
-  renderTodos() {
-    return this.state.todos.map((todo) => {
+  const renderTodos = () => {
+    return todos.map((todo) => {
       return (
         <li key={todo.id}>
           <Todo
             todo={todo}
-            doneChange={(id) => this.toggleDone(id)}
-            deleteTodo={(id) => this.deleteTodo(id)} />
+            doneChange={(id) => onToggleDone(id)}
+            deleteTodo={(id) => onDeleteTodo(id)}
+          />
         </li>
       );
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <p>The <em>best</em> todo app out there.</p>
-        <h1>Things to get done:</h1>
-        <ul className="todos-list">{ this.renderTodos() }</ul>
-        <AddTodo onNewTodo={(todo) => this.addTodo(todo)} />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <p>
+        The <em>best</em> todo app out there.
+      </p>
+      <h1>Things to get done:</h1>
+      <ul className="todos-list">{renderTodos()}</ul>
+      <AddTodo onNewTodo={(todo) => onAddTodo(todo)} />
+    </div>
+  );
 }

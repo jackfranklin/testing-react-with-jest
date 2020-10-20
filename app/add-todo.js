@@ -1,38 +1,34 @@
-import React from 'react';
+import React, { useState } from "react";
 
-export default class AddTodo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formInput: ''
-    };
-  }
+export default function AddTodo(props) {
+  const [formInput, setFormInput] = useState("");
 
-  inputChange(e) {
-    this.setState({ formInput: e.target.value });
-  }
+  const inputChange = (event) => {
+    setFormInput(event.target.value);
+  };
 
-  addTodo(e) {
-    e.preventDefault();
+  const addTodo = (event) => {
+    event.preventDefault();
 
-    const newTodoName = this.state.formInput;
+    const newTodoName = formInput;
 
     if (newTodoName) {
-      this.props.onNewTodo({
-        name: newTodoName
+      props.onNewTodo({
+        name: newTodoName,
       });
 
-      this.setState({ formInput: '' });
+      setFormInput("");
     }
-  }
-  render() {
-    return (
-      <div className="add-todo">
-        <input type="text" placeholder="Walk the dog" onChange={(e) => this.inputChange(e)} />
-        <button onClick={(e) => this.addTodo(e) }>
-          Add Todo
-        </button>
-      </div>
-    )
-  }
+  };
+
+  return (
+    <div className="add-todo">
+      <input
+        type="text"
+        placeholder="Walk the dog"
+        onChange={(e) => inputChange(e)}
+      />
+      <button onClick={(e) => addTodo(e)}>Add Todo</button>
+    </div>
+  );
 }
